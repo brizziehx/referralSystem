@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer components {
+    .input {
+        @apply block w-full p-2 rounded-md ring-1 ring-slate-600  focus:ring-slate-700 focus:ring-1 outline-0 border-0 mt-1
+    }
+
+    .card {
+        @apply h-card bg-white p-2 col-span-3 rounded-md border border-gray-200
+    }
+}
