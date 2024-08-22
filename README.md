@@ -1,4 +1,4 @@
-# Laravel Referral System
+# Referral System
 
 ## Installation
 
