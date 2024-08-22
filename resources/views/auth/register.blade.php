@@ -7,35 +7,35 @@
                 <span class="text-sm">Fullname</span>
                 <input type="text" name="fullname" class="input" value="{{ old('fullname') }}">
                 @error('fullname')
-                    <div class="text-red-500 text-sm mt-1">{{ $message }}</div>
+                    <div class="text-red-500 text-xs mt-1">{{ $message }}</div>
                 @enderror
             </div>
             <div class="mt-2">
                 <span class="text-sm">Email Address</span>
-                <input type="text" name="email" class="input" value="{{ old('email') }}">
+                <input type="email" name="email" class="input" value="{{ old('email') }}">
                 @error('email')
-                    <div class="text-red-500 text-sm mt-1">{{ $message }}</div>
+                    <div class="text-red-500 text-xs mt-1">{{ $message }}</div>
                 @enderror
             </div>
             <div class="mt-2">
                 <span class="text-sm">Password</span>
                 <input type="password" name="password" class="input" value="{{ old('password') }}">
                 @error('password')
-                    <div class="text-red-500 text-sm mt-1">{{ $message }}</div>
+                    <div class="text-red-500 text-xs mt-1">{{ $message }}</div>
                 @enderror
             </div>
             <div class="mt-2">
                 <span class="text-sm">Confirm Password</span>
                 <input type="password" name="password_confirmation" class="input" value="{{ old('password_confirmation') }}">
                 @error('password_confirmation')
-                    <div class="text-red-500 text-sm mt-1">{{ $message }}</div>
+                    <div class="text-red-500 text-xs mt-1">{{ $message }}</div>
                 @enderror
             </div>
             <div class="mt-2">
                 <span class="text-sm">Referral Code <span class="text-gray-400">(Optional)</span></span>
                 <input type="text" name="referral_code" class="input" value="{{ old('referral') }}">
                 @error('referral')
-                    <div class="text-red-500 text-sm mt-1">{{ $message }}</div>
+                    <div class="text-red-500 text-xs mt-1">{{ $message }}</div>
                 @enderror
             </div>
             <div class="mt-3">

@@ -18,5 +18,6 @@ Route::middleware('guest')->group(function() {
 Route::middleware(['auth'])->group(function() {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
     Route::view('referrals', 'dashboard.referral.index')->name('referral.index');
+    Route::view('earnings', 'dashboard.earning.index')->name('earnings.index');
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });
