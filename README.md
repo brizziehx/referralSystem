@@ -7,3 +7,4 @@
 3. Set up your `.env` file
 4. Run `php artisan migrate`
 5. Run `php artisan serve`
+5. Run `npm run dev`
