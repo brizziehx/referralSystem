@@ -18,17 +18,19 @@
                 <i class="bx bx-home-alt text-md mr-2"></i>
                 Dashboard
             </a>
-            <a href="{{ route('referral.index') }}" class="{{ request()->routeIs('referral.index') ? 'bg-slate-50' : '' }} flex items-center p-2 mb-2 hover:bg-slate-50 rounded-md">
+            <a href="{{ route('referrals.index') }}" class="{{ request()->routeIs('referrals.index') ? 'bg-slate-50' : '' }} flex items-center p-2 mb-2 hover:bg-slate-50 rounded-md">
                 <i class="bx bx-group text-md mr-2"></i>
                 Referrals
             </a>
             <a href="{{ route('earnings.index') }}" class="{{ request()->routeIs('earnings.index') ? 'bg-slate-50' : '' }} flex items-center p-2 mb-2 hover:bg-slate-50 rounded-md">
-                <i class="bx bx-wallet-alt text-md mr-2"></i>
+                <i class="bx bx-credit-card text-md mr-2"></i>
                 Earnings
             </a>
-            {{-- <a href="{{ route('dashboard.index') }}" class="block p-2  rounded-md">
-                Logout
-            </a> --}}
+            <a href="{{ route('purchases.index') }}" class="{{ request()->routeIs('purchases.index') || request()->routeIs('purchases.create') ? 'bg-slate-50' : '' }} flex items-center p-2 mb-2 hover:bg-slate-50 rounded-md">
+                <i class="bx bx-wallet-alt text-md mr-2"></i>
+                Purchases
+            </a>
+            
             <form action="{{ route('logout') }}" method="post" class="w-full  px-1 hover:bg-slate-50 py-2  rounded-md">
                 @csrf
                 <i class="bx bx-log-out text-md mr-2"></i>

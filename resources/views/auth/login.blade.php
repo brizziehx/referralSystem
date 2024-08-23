@@ -27,10 +27,10 @@
                 @endif 
             </p>
             @error('message')
-            <span class="text-red-500 text-sm block mb-2">{{ $message }}</span>
+                <span class="text-red-500 text-sm block mb-2">{{ $message }}</span>
             @enderror
 
-            <p class="mt-3 block">Don't have an accoun't!? Register <a href="{{ route('auth.register') }}" class="text-red-500">here</a></p>
+            <p class="mt-3 block text-center">Don't have an accoun't!? Register <a href="{{ route('auth.register') }}" class="text-red-500">here</a></p>
         </form>
     </div>
 </x-guestLayout>

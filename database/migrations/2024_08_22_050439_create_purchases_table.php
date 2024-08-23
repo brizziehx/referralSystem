@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('purchases', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('referred_id');
+            $table->unsignedBigInteger('referred_id')->nullable();
+            $table->string('product_name');
             $table->decimal('amount', 10, 2);
             $table->timestamps();
 

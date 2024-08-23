@@ -2,21 +2,24 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Referral;
-use App\Http\Requests\StoreReferralRequest;
-use App\Http\Requests\UpdateReferralRequest;
+use App\Models\User;
+use App\Models\Earning;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\StoreEarningRequest;
+use App\Http\Requests\UpdateEarningRequest;
 
-class ReferralController extends Controller
+class EarningController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $referrals = Auth::user()->referralsMade()->with('referred')->get(); 
+        $authUserId = Auth::user()->id;
 
-        return view('dashboard.referral.index', ['referrals' => $referrals]);
+        $purchases = Earning::where('user_id', $authUserId)->get();
+        // dd($purchases);
+        return view('dashboard.earning.index', ['purchases' => $purchases]);
     }
 
     /**
@@ -30,7 +33,7 @@ class ReferralController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreReferralRequest $request)
+    public function store(StoreEarningRequest $request)
     {
         //
     }
@@ -38,7 +41,7 @@ class ReferralController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Referral $referral)
+    public function show(Earning $earning)
     {
         //
     }
@@ -46,7 +49,7 @@ class ReferralController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Referral $referral)
+    public function edit(Earning $earning)
     {
         //
     }
@@ -54,7 +57,7 @@ class ReferralController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateReferralRequest $request, Referral $referral)
+    public function update(UpdateEarningRequest $request, Earning $earning)
     {
         //
     }
@@ -62,7 +65,7 @@ class ReferralController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Referral $referral)
+    public function destroy(Earning $earning)
     {
         //
     }

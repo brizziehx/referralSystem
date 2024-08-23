@@ -31,10 +31,21 @@ class User extends Authenticatable
         });
     }
 
-    public function referrals()
+    public function referralsMade()
     {
         return $this->hasMany(Referral::class, 'referrer_id');
     }
+
+    public function referralsReceived()
+    {
+        return $this->hasMany(Referral::class, 'referred_id');
+    }
+
+    public function getReferralLinkAttribute()
+    {
+        return url('/register?ref=' . $this->referral->referral_code);
+    }
+
 
     /**
      * The attributes that should be hidden for serialization.

@@ -9,11 +9,14 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
-    public function register() {
-        return view('auth.register');
+    public function register(Request $request) {
+        $referralCode = $request->query('ref');
+
+        return view('auth.register', ['referralCode' => $referralCode]);
     }
 
     public function store(Request $request) {
+        $referralCode = $request->query('ref');
         $fields = $request->validate([
             'fullname' => ['required', 'max:50'],
             'email' => ['required', 'unique:users'],
@@ -28,9 +31,10 @@ class AuthController extends Controller
             'password' => $request->password
         ]);
 
+ 
         if ($request->referral_code) {
             $referrer = User::where('referral_code', $request->referral_code)->first();
-
+            // dd($referrer);
             Referral::create([
                 'referrer_id' => $referrer->id,
                 'referred_id' => $user->id,
@@ -61,5 +65,10 @@ class AuthController extends Controller
         $request->session()->regenerateToken();
         
         return redirect('/login');
+    }
+
+    protected function rewardReferrer(User $referrer, User $referee)
+    {
+        $referrer->referral->increment('earnings', 10);
     }
 }
