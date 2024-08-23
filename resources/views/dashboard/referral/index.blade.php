@@ -20,11 +20,18 @@
                 $sn = 1;
             @endphp
             @foreach ($referrals as $referral)
+                @php 
+                    if($referral->referred->status == 1)  {
+                        $status = "Used";
+                    } else {
+                        $status = "Not Used";
+                    }
+                @endphp
                 <tr>
                     <td class="td">{{ $sn++ }}</td>
                     <td class="td">{{ $referral->referred->fullname }}</td>
                     <td class="td">{{ $referral->referred->email }}</td>
-                    <td class="td"></td>
+                    <td class="td">{{ $status }}</td>
                 </tr>
             @endforeach
         </table>

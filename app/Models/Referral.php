@@ -28,11 +28,6 @@ class Referral extends Model
         return $this->belongsTo(User::class, 'referred_id');
     }
 
-    public function calculateEarnings()
-    {
-        $percentage = 0.10; 
-        return $this->purchases()->sum('amount') * $percentage;
-    }
 
     public function purchases()
     {

@@ -23,7 +23,6 @@ class PurchaseController extends Controller
 
     public function store(Request $request)
     {
-
         $fields = $request->validate([
             'referred_id' => ['required'],
             'product_name' => ['required', 'min:3'],
@@ -45,24 +44,10 @@ class PurchaseController extends Controller
                 'amount_earned' => $referrerEarnings,
                 'purchaser_id' => Auth::user()->id
             ]);
+
+            DB::table('users')->where('id', Auth::user()->id)->update(['status' => 1]);
         }
         
-
         return back()->with('success', 'Product record has been added successfully');
     }
-
-    // public function getEarnings($referrerId)
-    // {
-    //     $referrals = Referral::where('referrer_id', $referrerId)->with('referred.purchases')->get();
-
-    //     $earnings = 0;
-
-    //     foreach ($referrals as $referral) {
-    //         foreach ($referral->referred->purchases as $purchase) {
-    //             $earnings += $purchase->amount * 0.1;
-    //         }
-    //     }
-
-    //     return response()->json(['earnings' => $earnings], 200);
-    // }
 }
