@@ -1,5 +1,6 @@
 <x-guestLayout>
-    <div class="w-form_width bg-white p-3 px-4 rounded-md border border-gray-200">
+    <div class="lg:w-form_width  md:bg-white p-3 px-4 rounded-md md:border border-gray-200">
+        <h1 class="text-xl font-thin mb-2 md:hidden"> Hello, welcome to Referral System</h1>
         <h1 class="text-xl font-bold mb-3">Login</h1>
         <form action="{{ route('auth.login') }}" method="post">
             @csrf
@@ -18,7 +19,7 @@
                 @enderror
             </div>
             <div class="mt-3">
-                <button class="block w-fit p-2 rounded-md text-white bg-blue-900 hover:bg-blue-950 transition-all outline-0 border-0 mt-1">Login</button>
+                <button class="block md:w-fit w-full p-2 rounded-md text-white bg-blue-900 hover:bg-blue-950 transition-all outline-0 border-0 mt-1">Login</button>
             </div>
 
             <p class="text-md text-green-600 mt-2">

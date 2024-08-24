@@ -19,7 +19,7 @@ class AuthController extends Controller
         $referralCode = $request->query('ref');
         $fields = $request->validate([
             'fullname' => ['required', 'max:50'],
-            'email' => ['required', 'unique:users'],
+            'email' => ['required', 'unique:users', 'email'],
             'password' => ['required', 'min:3', 'confirmed'],
             'password_confirmation' => ['required'],
             'referral_code' => ['nullable', 'string', 'exists:users,referral_code',]

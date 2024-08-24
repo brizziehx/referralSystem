@@ -7,11 +7,11 @@
 
 @layer components {
     .input {
-        @apply block w-full p-2 rounded-md ring-1 ring-slate-600  focus:ring-slate-700 focus:ring-1 outline-0 border-0 mt-1
+        @apply block w-full p-2 rounded-md ring-1 ring-slate-600 md:bg-white bg-transparent  focus:ring-slate-700 focus:ring-1 outline-0 border-0 mt-1
     }
 
     .card {
-        @apply h-card bg-white p-2 col-span-3 rounded-md border border-gray-200
+        @apply h-card bg-white p-2 md:col-span-3 col-span-12 rounded-md border border-gray-200
     }
 
     .td {

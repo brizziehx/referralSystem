@@ -14,7 +14,7 @@ class ReferralController extends Controller
      */
     public function index()
     {
-        $referrals = Auth::user()->referralsMade()->with('referred')->get(); 
+        $referrals = Auth::user()->referralsMade()->with('referred')->paginate(4); 
 
         return view('dashboard.referral.index', ['referrals' => $referrals]);
     }

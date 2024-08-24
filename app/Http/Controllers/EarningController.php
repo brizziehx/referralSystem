@@ -17,7 +17,7 @@ class EarningController extends Controller
     {
         $authUserId = Auth::user()->id;
 
-        $purchases = Earning::where('user_id', $authUserId)->get();
+        $purchases = Earning::where('user_id', $authUserId)->paginate(5);
         // dd($purchases);
         return view('dashboard.earning.index', ['purchases' => $purchases]);
     }

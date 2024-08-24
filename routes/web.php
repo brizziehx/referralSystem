@@ -17,7 +17,7 @@ Route::middleware('guest')->group(function() {
     Route::post('/register', [AuthController::class, 'store'])->name('users.store');
 });
 
-
+// private routes
 Route::middleware(['auth'])->group(function() {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
     Route::resource('referrals', ReferralController::class);
