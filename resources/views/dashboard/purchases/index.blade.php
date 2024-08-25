@@ -26,5 +26,8 @@
                 </tr>
             @endforeach
         </table>
+        <div class="mt-4 w-2/5">
+            {{ $purchases->links() }}
+        </div>
     </div>
 </x-dashboard-layout>

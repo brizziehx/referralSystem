@@ -1,18 +1,20 @@
 <?php
 
 namespace App\Http\Controllers;
+use LDAP\Result;
 use App\Models\Earning;
 use App\Models\Purchase;
 use App\Models\Referral;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 class PurchaseController extends Controller
 {
     public function index() {
-        $purchases = Purchase::where('referred_id', Auth::user()->id)->get();
+        $purchases = Purchase::where('referred_id', Auth::user()->id)->paginate(4);
         // dd($purchases)
         return view('dashboard.purchases.index', ['purchases' => $purchases]);
     }
@@ -32,19 +34,18 @@ class PurchaseController extends Controller
         $referrerEarnings = $request->amount * 0.1;
         $purchase = Purchase::create($fields);
 
-        $referrals = DB::table('referrals')
-        ->join('users', 'referrals.referrer_id', '=', 'users.id')
-        ->select('referrals.*', 'users.*')
-        ->get();
-
-        if($referrals->isNotEmpty()) {
-            Earning::create([
-                'user_id' => $referrals[0]->referrer_id, 
-                'purchase_id' => $purchase->id,
-                'amount_earned' => $referrerEarnings,
-                'purchaser_id' => Auth::user()->id
-            ]);
-
+        $refs = Auth::user()->referralsReceived()->with('referrer')->get();
+        foreach($refs as $ref) {
+            // print_r($ref->referrer_id);
+            if($refs->isNotEmpty()) {
+                Earning::create([
+                    'user_id' => $ref->referrer_id, 
+                    // 'user_id' => $referral->user, 
+                    'purchase_id' => $purchase->id,
+                    'amount_earned' => $referrerEarnings,
+                    'purchaser_id' => Auth::id()
+                ]);
+            }
             DB::table('users')->where('id', Auth::user()->id)->update(['status' => 1]);
         }
         

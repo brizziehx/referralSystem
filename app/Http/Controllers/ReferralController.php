@@ -12,7 +12,7 @@ class ReferralController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Referral $referral)
     {
         $referrals = Auth::user()->referralsMade()->with('referred')->paginate(4); 
 

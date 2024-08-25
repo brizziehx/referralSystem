@@ -46,7 +46,7 @@
                 <i id="burger" class="bx bx-menu cursor-pointer text-3xl ml-3 md:hidden"></i>
             </div>
             <div class="col-span-6 mx-3 text-right">
-                <span class="border border-gray-200 bg-gray-100 rounded-md p-2">{{ Auth::user()->fullname }}</span>
+                <span class="border border-gray-200 cursor-pointer bg-gray-100 rounded-md p-2">{{ Auth::user()->fullname }}</span>
             </div>
         </header>
         <main class="h-auto mx-3 py-3 grid grid-cols-12 gap-4">
