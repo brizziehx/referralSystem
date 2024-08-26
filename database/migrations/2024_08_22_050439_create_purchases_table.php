@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('referred_id')->nullable();
             $table->string('product_name');
-            $table->decimal('amount', 10, 2);
+            $table->string('amount');
             $table->timestamps();
 
             $table->foreign('referred_id')->references('id')->on('users')->onDelete('cascade');
